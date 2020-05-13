@@ -8,6 +8,14 @@ class UserFrontPage extends StatefulWidget {
 }
 
 class _UserFrontPageState extends State<UserFrontPage> {
+  var points = <LatLng>[
+    new LatLng(35.22, -101.83),
+    new LatLng(32.77, -96.79),
+    new LatLng(29.76, -95.36),
+    new LatLng(29.42, -98.49),
+    new LatLng(35.22, -101.83),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -24,22 +32,31 @@ class _UserFrontPageState extends State<UserFrontPage> {
                     'pk.eyJ1IjoiYWxhbmhlbnJ5MDIyMSIsImEiOiJjazl3cG13d2QwYmN4M2h1aGQzdmZlbXBuIn0.xBx-N1b8FsJeH4DYa5SV0g',
                     'style': 'mapbox://styles/alanhenry0221/ck9wq4ri80olr1ipejj0wttm7'
                   }),
-              new MarkerLayerOptions(markers: [
-                new Marker(
-                    width: 45.0,
-                    height: 45.0,
-                    point: new LatLng(35.215, -101.825),
-                    builder: (context) => new Container(
-                      child: IconButton(
-                        icon: Icon(Icons.location_on),
-                        color: Colors.blue,
-                        iconSize: 45.0,
-                        onPressed: () {
-                          print('Marker tapped');
-                        },
-                      ),
-                    ))
-              ])
+//              new MarkerLayerOptions(markers: [
+//                new Marker(
+//                    width: 45.0,
+//                    height: 45.0,
+//                    point: new LatLng(35.215, -101.825),
+//                    builder: (context) => new Container(
+//                      child: IconButton(
+//                        icon: Icon(Icons.location_on),
+//                        color: Colors.blue,
+//                        iconSize: 45.0,
+//                        onPressed: () {
+//                          print('Marker tapped');
+//                        },
+//                      ),
+//                    ))
+//              ])
+            new PolylineLayerOptions(
+              polylines: [
+                new Polyline(
+                  points: points,
+                  strokeWidth: 5.0,
+                  color: Colors.red,
+                )
+              ]
+            )
             ]));
   }
 }
